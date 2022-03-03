@@ -27,8 +27,6 @@ CREATE TABLE IF NOT EXISTS cliente (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
-
-
 -- --------------------------------------------------------
 
 --
@@ -57,12 +55,13 @@ CREATE TABLE IF NOT EXISTS empleado (
 DROP TABLE IF EXISTS 'cola';
 
 CREATE TABLE IF NOT EXISTS cola (
-  id_servicio int(11) NOT NULL AUTO_INCREMENT,
-  hora_llegada time NOT NULL,
+  id_servicio int NOT NULL AUTO_INCREMENT,
+  id_cliente int NOT NULL,
   nombre varchar(75)  NOT NULL,
   
   PRIMARY KEY (id_servicio)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 
 -- --------------------------------------------------------
 
@@ -82,6 +81,7 @@ CREATE TABLE IF NOT EXISTS centro (
   PRIMARY KEY (id_servicio)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+
 -- --------------------------------------------------------
 
 --
@@ -99,5 +99,42 @@ CREATE TABLE IF NOT EXISTS agenda (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
+-- --------------------------------------------------------
 
+--
+-- Estructura de tabla SERVICIO
+--
+
+DROP TABLE IF EXISTS 'servicio';
+
+CREATE TABLE IF NOT EXISTS servicio (
+  id int NOT NULL AUTO_INCREMENT,
+  nombre varchar(75) NOT NULL,
+  
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+-- --------------------------------------------------------
+
+--
 -- Claves foráneas
+--
+
+alter table empleado
+	add constraint fk_empleado_centro
+	foreign key (id_centro) references centro(id)
+	on delete restrict on update cascade;
+    
+alter table agenda
+	add constraint fk_agenda_centro
+    foreign key (id) references agenda(id)
+    on delete restrict on update cascade;
+
+alter table cola
+	add constraint fk_cola_cliente
+    foreign key (id_cliente) references cliente(id)
+    on delete restrict on update cascade;
+  add constraint fk_cola_servicio
+    foreign key (id_servicio) references servicio(id)
+    on delete restrict on update cascade;
