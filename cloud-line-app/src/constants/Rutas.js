@@ -1,6 +1,7 @@
-// Rutas de l'aplicacion
+
+// Rutes de l'aplicació
 export const urlsApp = {
     login:"/Login",
-    inicio:"/",
+    inici:"/",
     barraNavegacio:"/BarraNavegacio"
 }
