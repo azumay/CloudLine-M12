@@ -8,7 +8,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import { theme } from './constants/Estils'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
-import CampaignIcon from '@mui/icons-material/Campaign';
+import HomeIcon from '@mui/icons-material/Home';
 import ClearAllIcon from '@mui/icons-material/ClearAll';
 import Inici from './Vistes/Inici';
 import NavegacioBarVista from './Vistes/NavegacioBarVista';
@@ -17,7 +17,7 @@ import Container from '@mui/material/Container';
 const elementsProba = [
   {
     nom: "Inicio",
-    icona: <CampaignIcon />,
+    icona: <HomeIcon />,
     redireccio: urlsApp.inici
   }, {
     nom: "divider"
