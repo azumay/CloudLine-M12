@@ -13,6 +13,9 @@ import ClearAllIcon from '@mui/icons-material/ClearAll';
 import Inici from './Vistes/Inici';
 import NavegacioBarVista from './Vistes/NavegacioBarVista';
 import Container from '@mui/material/Container';
+import createPopper from '@popperjs/core';
+import * as bootstrap from 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const elementsProba = [
   {
