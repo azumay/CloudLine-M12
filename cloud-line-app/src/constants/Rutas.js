@@ -3,5 +3,10 @@
 export const urlsApp = {
     login:"/Login",
     inici:"/",
-    barraNavegacio:"/BarraNavegacio"
+    barraNavegacio:"/BarraNavegacio",
+    citaVacuna:"/CitaVacuna",
+    citaDoctor:"/CitaDoctor",
+    citaMedicamento: "/CitaMedicamento",
+    citaRevision: "/CitaRevision",
+
 }
