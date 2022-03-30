@@ -1,7 +1,71 @@
 .serveis img{
-  width: 150px;
+  width: 100px;
 }
 
+/* ESTILOS FORM CITA PREVIA */
+
+.formCitaPrevia {
+  max-width: 800px;
+  margin: 0 auto;
+  width: 50%;
+}
+.formCitaPrevia input{
+  margin-bottom: 15px;
+}
+textarea,
+select,
+input {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 4px;
+  padding: 10px 15px;
+  
+  font-size: 14px;
+  border: 2px solid #6785c1;
+
+}
+
+.label,
+section > label {
+  line-height: 2;
+  text-align: left;
+  display: block;
+  margin-bottom: 13px;
+  margin-top: 20px;
+  color: white;
+  font-size: 14px;
+  font-weight: 200;
+}
+
+input[type="submit"],
+.button {
+  position: relative;
+  background: #6785c1;
+  color: white;
+  text-transform: uppercase;
+  border: none;
+  font-weight: 600;
+  margin-top: 20px;
+  padding: 20px;
+  font-size: 16px;
+  letter-spacing: 2px;
+  display: block;
+  appearance: none;
+  border-radius: 4px;
+  width: 100%;
+  font-weight: 400;
+  letter-spacing: 0.5rem;
+  transition: 0.3s all;
+}
+.containerForm {
+  display: grid;
+  grid-template-columns: 1fr ;
+  grid-gap: 20px;
+}
 
 
 .App {
