@@ -13,11 +13,11 @@ export default function Inici(props) {
 
     <div className="container">
       <div className="row">
-      <h1 className="mb-5">Pedir hora para vacunarse</h1>
+      <h1 className="mb-5">Cola para vacunarse</h1>
    
       <Servicio img="vacuna.webp" titulo="Vacunación" />
-      <FormCitaPrevia/>
-        <Link to="/">Volver</Link>
+      <FormCitaPrevia servei='Vacunacio' />
+      <Link to="/" className="button-62">Tornar</Link>
     </div>
     </div>
   );

@@ -9,11 +9,11 @@ export default function Inici(props) {
 
     <div className="container">
       <div className="row">
-      <h1 className="mb-5">Pedir hora para visita al doctor</h1>
+      <h1 className="mb-5">Cola para visita al doctor</h1>
    
       <Servicio img="doctor.png" titulo="Doctor" />
-      <FormCitaPrevia/>
-      <Link to="/">Volver</Link>
+      <FormCitaPrevia servei='Doctor'/>
+      <Link to="/" className="button-62">Tornar</Link>
       
     </div>
     </div>

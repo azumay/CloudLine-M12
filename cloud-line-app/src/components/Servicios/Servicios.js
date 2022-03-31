@@ -5,8 +5,8 @@ export default function Servicio (props) {
     
     return(
         <div>
-             <h3>{props.titulo}</h3>
             <img className="imgServei" src={"img-serveis/" + props.img}></img>
+            <h3 className="button-63">{props.titulo}</h3>
         </div>
     )
 }

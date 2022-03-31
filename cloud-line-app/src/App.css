@@ -1,15 +1,53 @@
-.serveis img{
+.serveis img {
   width: 100px;
 }
 
 /* ESTILOS FORM CITA PREVIA */
+
+
+
+/* CSS */
+.button-62:hover {
+  color: white !important;
+}
+.button-62 {
+  background: linear-gradient(to bottom right, #EF4765, #FF9A5A);
+  border: 0;
+  border-radius: 12px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 2.5;
+  outline: transparent;
+  padding: 0 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow .2s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  width: 25% !important;
+  margin: auto;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+.button-62:not([disabled]):focus {
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+}
+
+.button-62:not([disabled]):hover {
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+}
 
 .formCitaPrevia {
   max-width: 800px;
   margin: 0 auto;
   width: 50%;
 }
-.formCitaPrevia input{
+.formCitaPrevia input {
   margin-bottom: 15px;
 }
 textarea,
@@ -23,10 +61,9 @@ input {
   width: 100%;
   border-radius: 4px;
   padding: 10px 15px;
-  
+
   font-size: 14px;
   border: 2px solid #6785c1;
-
 }
 
 .label,
@@ -45,6 +82,7 @@ input[type="submit"],
 .button {
   position: relative;
   background: #6785c1;
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
   color: white;
   text-transform: uppercase;
   border: none;
@@ -63,10 +101,9 @@ input[type="submit"],
 }
 .containerForm {
   display: grid;
-  grid-template-columns: 1fr ;
+  grid-template-columns: 1fr;
   grid-gap: 20px;
 }
-
 
 .App {
   text-align: center;
