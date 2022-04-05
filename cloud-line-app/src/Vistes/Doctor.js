@@ -45,7 +45,8 @@ export default function Inici(props) {
           body: JSON.stringify({
             Nombre: nombre.campo,
             Apellido: apellido.campo,
-            Telefono: telefono.campo
+            Telefono: telefono.campo,
+            Servicio: 'Doctor'
             
           }),
         });
@@ -68,7 +69,7 @@ export default function Inici(props) {
       <h1 className="mb-5">Cola para visita al doctor</h1>
    
       <Servicio img="doctor.png" titulo="Doctor" />
-
+    <div className="mb-5">
       <Formulario action="" onSubmit={onSubmit}>
           <Input
             estado={nombre}
@@ -96,7 +97,7 @@ export default function Inici(props) {
             cambiarEstado={cambiarTelefono}
             tipo="tel"
             label="Telefono"
-            placeholder="+34-666-666-666"
+            placeholder="+34"
             name="telefono"
             leyendaError="Telefono no valido."
             expresionRegular={expresiones.telefono}
@@ -104,8 +105,8 @@ export default function Inici(props) {
            <Boton type="submit">Enviar</Boton>
         </Formulario>
       
-      <Link to="/" className="button-62">Tornar</Link>
-      
+      <Link to="/" className="button-62">Volver</Link>
+      </div>
     </div>
     </div>
   );
