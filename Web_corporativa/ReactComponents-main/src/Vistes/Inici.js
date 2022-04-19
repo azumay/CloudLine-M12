@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 import CodiBloc from '../components/CodiBloc/CodiBloc';
-import Banner from './Queue.png';
+import Banner from './Queue.jpeg';
 import Qr from './QR.png';
 
 
@@ -16,7 +16,7 @@ export default function Inici(props) {
         <div className='container'>
             <div className='row'>
                 <div className='col-12 mb-4'>
-                    <img src={Banner} alt='bannerCloudLine'></img>
+                    <img src={Banner} alt='bannerCloudLine' className='w-100'></img>
                 </div>
             </div>   
             <div className='row'>
@@ -26,10 +26,10 @@ export default function Inici(props) {
                             <div className='col-12'>
                                 <h3>Ventajas de las colas virtuales</h3>
                             </div>
-                            <div className='col-6'>
-                                <div className='card mb-3'>
+                            <div className='col-12 col-xl-6 mb-3'>
+                                <div className='card h-100'>
                                     <div className='card-body'>
-                                        <img width='200px' src={Qr} className='img-card-top rounded' alt='imagen identificativa ventaja' />
+                                        <img src={Qr} className='img-card-top rounded' alt='imagen identificativa ventaja' />
                                         <h5 className='card-title'>
                                             Evitar aglomeraciones
                                         </h5>
@@ -39,10 +39,10 @@ export default function Inici(props) {
                                     </div>
                                 </div>
                             </div>
-                            <div className='col-6'>
-                                <div className='card mb-3'>
+                            <div className='col-12 col-xl-6 mb-3'>
+                                <div className='card h-100'>
                                     <div className='card-body'>
-                                    <img width='200px' src={Qr} className='img-card-top rounded' alt='imagen identificativa ventaja' />
+                                    <img src={Qr} className='img-card-top rounded' alt='imagen identificativa ventaja' />
                                         <h5 className='card-title'>
                                             Mejor gestión
                                         </h5>
@@ -52,10 +52,10 @@ export default function Inici(props) {
                                     </div>
                                 </div>
                             </div>
-                            <div className='col-6'>
-                                <div className='card'>
+                            <div className='col-12 col-xl-6 mb-3'>
+                                <div className='card h-100'>
                                     <div className='card-body'>
-                                    <img width='200px' src={Qr} className='img-card-top rounded' alt='imagen identificativa ventaja' />
+                                    <img src={Qr} className='img-card-top rounded' alt='imagen identificativa ventaja' />
                                         <h5 className='card-title'>
                                             Menos estrés
                                         </h5>
@@ -65,10 +65,10 @@ export default function Inici(props) {
                                     </div>
                                 </div>
                             </div>
-                                <div className='col-6'>
-                                    <div className='card'>
+                                <div className='col-12 col-xl-6 mb-3'>
+                                    <div className='card h-100'>
                                         <div className='card-body'>
-                                        <img width='200px' src={Qr} className='img-card-top rounded' alt='imagen identificativa ventaja' />
+                                        <img src={Qr} className='img-card-top rounded' alt='imagen identificativa ventaja' />
                                             <h5 className='card-title'>
                                                 Reducción del tiempo de espera
                                             </h5>
