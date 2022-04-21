@@ -35,7 +35,10 @@ export default function Inici(props) {
 			telefono.valido === 'true' 
 			
 		){
-     
+      let date = new Date();
+      let horaLlegada = date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
+      console.log(horaLlegada)
+
          fetch("http://192.168.50.129:8080/users/cola", {
           method: "post",
           headers: {
@@ -46,7 +49,8 @@ export default function Inici(props) {
             Nombre: nombre.campo,
             Apellido: apellido.campo,
             Telefono: telefono.campo,
-            Servicio: 'Vacunación'
+            Servicio: 'Vacunación',
+           
             
           }),
         });

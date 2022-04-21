@@ -8,5 +8,6 @@ export const urlsApp = {
     citaDoctor:"/CitaDoctor",
     citaMedicamento: "/CitaMedicamento",
     citaRevision: "/CitaRevision",
+    cola: "/Cola"
 
 }
