@@ -1,6 +1,9 @@
 import './App.css';
 
 import NavegacioBar from './components/NavegacioBar/NavegacioBar';
+import Contacte from './Vistes/Contacte';
+import Preus from './Vistes/Preus';
+import Serveis from './Vistes/Serveis';
 import { urlsApp } from './constants/Rutas';
 import { Route, Routes } from 'react-router-dom';
 import Login from './components/Login/Login'
@@ -25,9 +28,9 @@ const elementsProba = [
   }, {
     nom: "divider"
   }, {
-    nom: "Barra de navegación",
+    nom: "Contacte",
     icona: <ClearAllIcon />,
-    redireccio: urlsApp.barraNavegacio
+    redireccio: urlsApp.contacte
   }, {
     nom: "Login",
     icona: <LockOpenIcon />,
@@ -52,6 +55,9 @@ function App() {
               <Route path={urlsApp.inici} element={<Inici />} />
               <Route path={urlsApp.barraNavegacio} element={<NavegacioBarVista />} />
               <Route path={urlsApp.login} element={<Login elementsLogin={elementLogin} />} />
+              <Route path={urlsApp.contacte} element={<Contacte />} />
+              <Route path={urlsApp.preus} element={<Preus />} />
+              <Route path={urlsApp.serveis} element={<Serveis />} />
             </Routes>
           </Container>
         </NavegacioBar>

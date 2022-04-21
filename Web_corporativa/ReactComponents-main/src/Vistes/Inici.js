@@ -3,6 +3,9 @@ import * as React from 'react';
 import CodiBloc from '../components/CodiBloc/CodiBloc';
 import Banner from './Queue.jpeg';
 import Qr from './QR.png';
+import Contacte from './Contacte';
+import Preus from './Preus';
+import Serveis from './Serveis';
 
 
 export default function Inici(props) {

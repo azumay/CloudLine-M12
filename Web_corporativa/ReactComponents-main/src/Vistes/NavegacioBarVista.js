@@ -1,6 +1,7 @@
 
 import * as React from 'react';
 import CodiBloc from '../components/CodiBloc/CodiBloc';
+import ContactsIcon from '@mui/icons-material/Contacts';
 
 
 export default function NavegacioBarVista(props) {
@@ -11,7 +12,9 @@ export default function NavegacioBarVista(props) {
       icona: <CampaignIcon/>,
       redireccio: urlsApp.inici
     }, {
-      nom: "divider"
+      nom: "Contacte",
+      icona: <ContactsIcon/>,
+      redirecció: urlsApp.contacte
     }
 ];`;
 
