@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Servicio from "./../components/Servicios/Servicios";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   Formulario,
   Boton,
@@ -11,7 +12,11 @@ import {
 
 import Input from "./../components/Form/Input";
 
+import DadesContext from "../context/DadesContext";
+
 export default function Inici(props) {
+
+  const navigate = useNavigate();
 
   const [formularioValido, cambiarFormularioValido] = useState(null);
   
@@ -19,6 +24,7 @@ export default function Inici(props) {
   const [apellido, cambiarApellido] = useState({ campo: "", valido: null });
   const [telefono, cambiarTelefono] = useState({ campo: "", valido: null });
 
+  const {user, setUser} = useContext(DadesContext);
 
   const expresiones = {
     nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
@@ -50,7 +56,12 @@ export default function Inici(props) {
             
           }),
         });
+        
      
+      setUser(true);
+      if (user){
+        return navigate('/Cola', { replace: true });
+      }
 			cambiarFormularioValido(true);
 			cambiarNombre({campo: '', valido: null});
       cambiarApellido({campo: '', valido: null})

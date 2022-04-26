@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { urlsApp } from "./../constants/Rutas";
 import Vacuna from "./../Vistes/Vacuna";
 
+
 export default function Inici(props) {
   const codi = `function Cuadro(props)
 {
@@ -33,6 +34,11 @@ export default function Inici(props) {
         <div className="col-md-6 mb-5">
         <Link to="/CitaRevision">
           <Servicio img="stethoscope.png" titulo="Revisón médica" />
+        </Link>
+        </div>
+        <div className="col-md-6 mb-5">
+        <Link to="/Cola">
+          <Servicio img="queue.png" titulo="Cola  " />
         </Link>
         </div>
       </div>

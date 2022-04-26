@@ -16,7 +16,7 @@ export default function Cola(props) {
                 "updatedAt": "2022-04-05T19:19:59.071Z",
                 "__v": 0
 */
-    const [data, setData] = useState([]);
+    const [data, setData] = useState();
 
         const columnsCola = [
           {
@@ -60,12 +60,11 @@ export default function Cola(props) {
             })
               .then(function (response) {
                 if (!response.ok) throw Error(response.status);
-                //console.log(response);
                 return response.json();
               })
               .then(function (myJson) {
-                //console.log(myJson);
-                setData(myJson.datosUser);
+                console.log(myJson[0].datosUser);
+                setData(myJson[0].datosUser);
               })
               .catch((error) => {
                 console.log(error.message);

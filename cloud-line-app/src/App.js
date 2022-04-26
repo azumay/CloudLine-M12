@@ -1,5 +1,5 @@
 import './App.css';
-
+import React, { useState } from "react";
 import NavegacioBar from './components/NavegacioBar/NavegacioBar';
 import { urlsApp } from './constants/Rutas';
 import { Route, Routes } from 'react-router-dom';
@@ -14,8 +14,17 @@ import Medicamento from './Vistes/Medicamento';
 import Revision from './Vistes/Revision';
 import Cola from './Vistes/Cola';
 
+/*Contextos*/
+import DadesContext from "./context/DadesContext";
+
+
 function App() {
+
+  const [user, setUser] = useState() ;
+
+ 
   return (
+    <DadesContext.Provider value={{user, setUser}}>
     <div className="App">
       <ThemeProvider theme={theme} >
         <NavegacioBar titol="Cloud Line" >
@@ -32,6 +41,7 @@ function App() {
         </NavegacioBar>
       </ThemeProvider>
     </div>
+    </DadesContext.Provider>
   );
 }
 
