@@ -37,7 +37,7 @@ export default function Inici(props) {
                                             Evitar aglomeraciones
                                         </h5>
                                         <p className='card-text'>
-                                            Las colas virtuales evitan aglomeraciones en los locales.
+                                            Las colas virtuales evitan aglomeraciones en los locales. Eso conlleva una serie de ventajas sobre cuando la espera para el servicio es en el propio local.
                                         </p>
                                     </div>
                                 </div>
@@ -50,7 +50,7 @@ export default function Inici(props) {
                                             Mejor gestión
                                         </h5>
                                         <p className='card-text'>
-                                            Es más fácil gestionar a los clientes y sus tiempos de espera si se tiene el control sobre cuánto tiempo se va a dar a cada uno.
+                                            Es más fácil gestionar los tiempos de espera y cuánto rato se estará con cada cliente si no están todos en un mismo sitio. Poder hacer otras cosas mientras no llega el turno ayuda a que no haya demasiada gente en un solo lugar.
                                         </p>
                                     </div>
                                 </div>
@@ -63,7 +63,7 @@ export default function Inici(props) {
                                             Menos estrés
                                         </h5>
                                         <p className='card-text'>
-                                            El hecho de que se evite la acumulación de gente causa menos estrés en los empleados y los clientes.
+                                            Que alguien esté esperando sin poder hacer nada más y sin que llegue su turno suele ser una experiencia estresante. Lo es para el propio cliente, que pierde mucho tiempo esperando, uno que podría emplear en otras actividades. También lo es para los empleados del lugar, ya que ese cliente estresado suele exteriorizarlo.
                                         </p>
                                     </div>
                                 </div>
@@ -76,7 +76,7 @@ export default function Inici(props) {
                                                 Reducción del tiempo de espera
                                             </h5>
                                             <p className='card-text'>
-                                                El hecho de que no haya mucha gente en el local ayuda a que todo vaya más rápido, así que los clientes tienen que esperar menos a su turno.
+                                                Se puede llegar a todos sitios mucho más rápido, sin que haya mucha gente que interrumpa al empleado para preguntar cuándo llegará su turno o dudas que pueden ser resueltas en otro momento.
                                             </p>
                                         </div>
                                     </div>
