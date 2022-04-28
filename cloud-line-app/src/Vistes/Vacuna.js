@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Servicio from "./../components/Servicios/Servicios";
 import { Link } from "react-router-dom";
@@ -9,12 +9,15 @@ import {
   MensajeError,
 } from "./../components/Form/EstilosForm";
 
+import DadesContext from "../context/DadesContext";
+
 import Input from "./../components/Form/Input";
 
 export default function Inici(props) {
 
   const [formularioValido, cambiarFormularioValido] = useState(null);
-  
+  const { user, setUser } = useContext(DadesContext);
+
   const [nombre, cambiarNombre] = useState({ campo: "", valido: null });
   const [apellido, cambiarApellido] = useState({ campo: "", valido: null });
   const [telefono, cambiarTelefono] = useState({ campo: "", valido: null });
@@ -26,45 +29,43 @@ export default function Inici(props) {
   };
 
   const onSubmit = (e) => {
-		e.preventDefault();
-    
-		if(
+    e.preventDefault();
 
-			nombre.valido === 'true' &&
-      apellido.valido === 'true'&&
-			telefono.valido === 'true' 
-			
-		){
-      let date = new Date();
-      let horaLlegada = date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
-      console.log(horaLlegada)
+    if (
+      nombre.valido === "true" &&
+      apellido.valido === "true" &&
+      telefono.valido === "true"
+    ) {
+      fetch("http://192.168.50.129:8080/users/cola", {
+        method: "post",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          Nombre: nombre.campo,
+          Apellido: apellido.campo,
+          Telefono: telefono.campo,
+          Servicio: "Vacunación",
+        }),
+      })
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+          setUser(data[0]);
+          console.log(data);
 
-         fetch("http://192.168.50.129:8080/users/cola", {
-          method: "post",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            Nombre: nombre.campo,
-            Apellido: apellido.campo,
-            Telefono: telefono.campo,
-            Servicio: 'Vacunación',
-           
-            
-          }),
+          if (user !== undefined) {
+            cambiarNombre({ campo: "", valido: null });
+            cambiarApellido({ campo: "", valido: null });
+            cambiarTelefono({ campo: "", valido: null });
+          } else {
+            window.location = "http://localhost:3000/Cola";
+          }
         });
-     
-			cambiarFormularioValido(true);
-			cambiarNombre({campo: '', valido: null});
-      cambiarApellido({campo: '', valido: null})
-      cambiarTelefono({campo: '', valido: null});
-			
-	
-		} else {
-			cambiarFormularioValido(false);
-		}
-	}
+    }
+  };
  
   return (
 

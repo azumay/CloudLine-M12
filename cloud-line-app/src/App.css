@@ -4,6 +4,14 @@
 
 /* ESTILOS FORM CITA PREVIA */
 
+/* CheckBox header table*/
+.cola-user .MuiDataGrid-columnHeaderCheckbox{
+  display: none !important;
+}
+/* CheckBox row table*/
+.cola-user .MuiDataGrid-cellCheckbox{
+  display: none !important;
+}
 
 
 /* CSS */

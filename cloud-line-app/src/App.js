@@ -13,6 +13,7 @@ import Vacuna from './Vistes/Vacuna';
 import Medicamento from './Vistes/Medicamento';
 import Revision from './Vistes/Revision';
 import Cola from './Vistes/Cola';
+import AdminCola from './Vistes/AdminCola';
 
 /*Contextos*/
 import DadesContext from "./context/DadesContext";
@@ -35,7 +36,10 @@ function App() {
               <Route path={urlsApp.citaDoctor} element={<Doctor  />} />
               <Route path={urlsApp.citaMedicamento} element={<Medicamento  />} />
               <Route path={urlsApp.citaRevision} element={<Revision  />} />
-              <Route path={urlsApp.cola} element={<Cola  />} />
+
+              <Route path={urlsApp.cola} element={ <Cola  /> } />
+              <Route path={urlsApp.adminCola} element={ <AdminCola  /> } />
+
             </Routes>
          
         </NavegacioBar>

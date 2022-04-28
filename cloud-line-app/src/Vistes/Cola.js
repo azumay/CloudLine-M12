@@ -20,33 +20,21 @@ export default function Cola(props) {
 
         const columnsCola = [
           {
-            field: "_id",
-            headerName: "id",
-            width: 250,
-            editable: false,
-          },
-          {
             field: "Nombre",
             headerName: "Nombre",
-            width: 200,
+            width: 450,
             editable: false,
           },
           {
             field: "Apellido",
             headerName: "Apellido",
-            width: 200,
-            editable: false,
-          },
-          {
-            field: "Telefono",
-            headerName: "Telefono",
-            width: 200,
+            width: 450,
             editable: false,
           },
           {
             field: "Servicio",
             headerName: "Servicio",
-            width: 200,
+            width: 250,
             editable: false,
           },
         ];
@@ -82,7 +70,7 @@ export default function Cola(props) {
       <h1 className="mb-5">Cola de espera</h1>
    
      
-        <div className="mb-5">
+        <div className="mb-5 cola-user">
 
         <DataGridMui
         data={data}
