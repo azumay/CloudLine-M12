@@ -17,11 +17,34 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 
 export default function AdminCola(props) {
+  const [id, setId] = useState("");
 
+  const [data, setData] = useState();
+
+  const [selectedRows, setSelectedRows] = useState([]);
+  const [selectionModel, setSelectionModel] = useState([]);
+
+  useEffect(() => {
+    selectID();
+  }, [selectedRows]);
+
+  function selectID() {
+    var row;
+    row = selectedRows[0];
+
+    if (selectedRows.length > 0) {
+      setId(row._id);
+    } else {
+      setId("");
+    }
+  }
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   function CustomToolbar(props) {
     return (
-    
       <GridToolbarContainer {...props} className="customToolBar">
         <GridToolbarColumnsButton />
         <GridToolbarFilterButton />
@@ -30,7 +53,7 @@ export default function AdminCola(props) {
           variant="contained"
           type="submit"
           startIcon={<DeleteIcon />}
-          //onClick={() => AlertDelete(id, postData, "eliminar")}
+          onClick={() => postData()}
           size="small"
           //disabled={selectionModel.length === 0}
           color="error"
@@ -41,7 +64,7 @@ export default function AdminCola(props) {
     );
   }
 
-/*
+  /*
                 "_id": "624c965ff8b62ea4ab54f6ec",
                 "Nombre": "Xavi",
                 "Apellido": "Yamuza",
@@ -51,138 +74,144 @@ export default function AdminCola(props) {
                 "updatedAt": "2022-04-05T19:19:59.071Z",
                 "__v": 0
 */
-    const [data, setData] = useState();
 
-    const [selectedRows, setSelectedRows] = useState([]);
-    const [selectionModel, setSelectionModel] = React.useState([]);
+  const columnsCola = [
+    {
+      field: "_id",
+      headerName: "id",
+      width: 250,
+      editable: false,
+    },
+    {
+      field: "Nombre",
+      headerName: "Nombre",
+      width: 200,
+      editable: false,
+    },
+    {
+      field: "Apellido",
+      headerName: "Apellido",
+      width: 200,
+      editable: false,
+    },
+    {
+      field: "Telefono",
+      headerName: "Telefono",
+      width: 200,
+      editable: false,
+    },
+    {
+      field: "Servicio",
+      headerName: "Servicio",
+      width: 200,
+      editable: false,
+    },
+  ];
 
-        const columnsCola = [
-          {
-            field: "_id",
-            headerName: "id",
-            width: 250,
-            editable: false,
-          },
-          {
-            field: "Nombre",
-            headerName: "Nombre",
-            width: 200,
-            editable: false,
-          },
-          {
-            field: "Apellido",
-            headerName: "Apellido",
-            width: 200,
-            editable: false,
-          },
-          {
-            field: "Telefono",
-            headerName: "Telefono",
-            width: 200,
-            editable: false,
-          },
-          {
-            field: "Servicio",
-            headerName: "Servicio",
-            width: 200,
-            editable: false,
-          },
-        ];
+  /* Metodo POST para actualizar datos de la cola */
+  const postData = async () => {
+    await fetch("http://192.168.50.129:8080/users/remove", {
+      method: "post",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        _id: id,
+      }),
+    })
+      .then(function (response) {
+        if (!response.ok) throw Error(response.status);
+        //console.log(response);
 
-        const getData = async () => {
-            await fetch("http://192.168.50.129:8080/users/getcola", {
-              headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-              },
-            })
-              .then(function (response) {
-                if (!response.ok) throw Error(response.status);
-                return response.json();
-              })
-              .then(function (myJson) {
-                console.log(myJson[0].datosUser);
-                setData(myJson[0].datosUser);
-              })
-              .catch((error) => {
-                console.log(error.message);
-              });
-          };
-    
-    useEffect(() => {
-            getData();
-          }, []);
-          
+        return response.json();
+      })
+      .then(function (myJson) {
+        console.log(myJson);
+      })
+      .catch((error) => {
+        //console.log("error" + error.message);
+      });
+      getData();
+  };
+  /* Metodo GET para obtener datos de la cola */
+  const getData = async () => {
+    await fetch("http://192.168.50.129:8080/users/getcola", {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    })
+      .then(function (response) {
+        if (!response.ok) throw Error(response.status);
+        return response.json();
+      })
+      .then(function (myJson) {
+        console.log(myJson[0].datosUser);
+        setData(myJson[0].datosUser);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
   return (
-
     <div className="container">
       <div className="row">
-      <h1 className="mb-5">Cola de espera</h1>
-   
-     
+        <h1 className="mb-5">Cola de espera</h1>
+
         <div className="mb-5">
+          <DataGridMui
+            components={{ Toolbar: CustomToolbar }}
+            data={data}
+            col={columnsCola}
+            rowId={(row) => row._id}
+            //////
+            selectionModel={selectionModel}
+            onSelectionModelChange={(selection) => {
+              const newSelectionModel = selection;
+              const selectedIDs = new Set(selection);
+              
+              if (newSelectionModel.length > 1) {
+                const getSelectedRows = data.filter((row) =>
+                  selectedIDs.has(row._id)
+                );
 
-        <DataGridMui
-        components={{ Toolbar: CustomToolbar }}
-        data={data}
-        col={columnsCola}
-        rowId={(row) => row.createdAt}
+                const selectionSet = new Set(selectionModel);
 
-        //////
-        selectionModel={selectionModel}
-        onSelectionModelChange={(selection) => {
+                const result = newSelectionModel.filter(
+                  (s) => !selectionSet.has(s)
+                );
 
-          
-          const newSelectionModel = selection;
-          const selectedIDs = new Set(selection);
-         
-          
-          if (newSelectionModel.length > 1) {
-            const getSelectedRows = data.filter((row) =>
-              selectedIDs.has(row.id)
-            );
+                setSelectionModel(result); // Aquí hacemos el cambio del checkbox del Row
 
+                const newRow = new Set(result);
 
-            const selectionSet = new Set(selectionModel);
+                const rowNuevo = data.filter((row) => newRow.has(row._id));
 
-            const result = newSelectionModel.filter(
-              (s) => !selectionSet.has(s)
-            );
+                setSelectedRows(rowNuevo); // Aquí asignamos los valores nuevos al Modal
+              } else {
+                const getSelectedRows = data.filter((row) =>
+                  selectedIDs.has(row._id)
+                );
 
-            setSelectionModel(result); // Aquí hacemos el cambio del checkbox del Row
+                if (newSelectionModel.length < 1) {
+                  setSelectedRows(getSelectedRows);
+                  setSelectionModel(newSelectionModel);
+                } else {
+                  setSelectedRows(getSelectedRows);
+                  setSelectionModel(newSelectionModel);
+                }
 
-
-            const newRow = new Set(result);
-
-            const rowNuevo = data.filter((row) =>
-            newRow.has(row.id)
-          );
-          
-           setSelectedRows(rowNuevo); // Aquí asignamos los valores nuevos al Modal
-            
-
-
-
-          } else {
-            const getSelectedRows = data.filter((row) =>
-              selectedIDs.has(row.id)
-            );
-
-            if(newSelectionModel.length<1){
-              setSelectedRows(getSelectedRows);
-              setSelectionModel(newSelectionModel);
-            }else{
-              setSelectedRows(getSelectedRows);
-              setSelectionModel(newSelectionModel);
-            }
-            //setSelectionModel = new Set();
-          }
-        }}
-        />
-        
+                //setSelectionModel = new Set();
+              }
+            }}
+          />
+        </div>
+        <Link to="/" className="button-62">
+          Volver
+        </Link>
       </div>
-      <Link to="/" className="button-62">Volver</Link>
-    </div>
     </div>
   );
 }
