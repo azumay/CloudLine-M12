@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
+import LogoutIcon from '@mui/icons-material/Logout';
+import UserContext from "../context/UserContext";
+
 
 /* DATAGRID - MUI*/
 import DataGridMui from "./../components/DataGridMui/DataGridMui";
@@ -17,6 +20,10 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 
 export default function AdminCola(props) {
+  const {user, setUser} = useContext(UserContext);
+  const logout = () => {
+    setUser(null);
+  }
   const [id, setId] = useState("");
 
   const [data, setData] = useState();
@@ -39,9 +46,7 @@ export default function AdminCola(props) {
     }
   }
 
-  useEffect(() => {
-    getData();
-  }, []);
+ 
 
   function CustomToolbar(props) {
     return (
@@ -76,12 +81,7 @@ export default function AdminCola(props) {
 */
 
   const columnsCola = [
-    {
-      field: "_id",
-      headerName: "id",
-      width: 250,
-      editable: false,
-    },
+    
     {
       field: "Nombre",
       headerName: "Nombre",
@@ -98,6 +98,12 @@ export default function AdminCola(props) {
       field: "Telefono",
       headerName: "Telefono",
       width: 200,
+      editable: false,
+    },
+    {
+      field: "createdAt",
+      headerName: "Hora llegada",
+      width: 250,
       editable: false,
     },
     {
@@ -154,11 +160,17 @@ export default function AdminCola(props) {
         console.log(error.message);
       });
   };
-
+  useEffect(() => {
+    getData();
+  }, []);
+ 
   return (
     <div className="container">
       <div className="row">
-        <h1 className="mb-5">Cola de espera</h1>
+     
+       
+       </div>
+        <h1 className="mb-5">Administrar cola</h1>
 
         <div className="mb-5">
           <DataGridMui
@@ -208,10 +220,16 @@ export default function AdminCola(props) {
             }}
           />
         </div>
-        <Link to="/" className="button-62">
-          Volver
-        </Link>
+        <Button 
+        variant="outlined" 
+        color="error"
+        startIcon={<LogoutIcon />}
+        onClick={() => logout()}
+      
+        >
+          Sortir
+      </Button>
       </div>
-    </div>
+    
   );
 }

@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Servicio from "./../components/Servicios/Servicios";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   Formulario,
   Boton,
@@ -14,6 +15,7 @@ import DadesContext from "../context/DadesContext";
 import Input from "./../components/Form/Input";
 
 export default function Inici(props) {
+  const navigate = useNavigate();
 
   const [formularioValido, cambiarFormularioValido] = useState(null);
   const { user, setUser } = useContext(DadesContext);
@@ -49,23 +51,21 @@ export default function Inici(props) {
           Servicio: "Vacunación",
         }),
       })
-        .then(function (response) {
-          return response.json();
-        })
-        .then(function (data) {
-          setUser(data[0]);
-          console.log(data);
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
 
-          if (user !== undefined) {
-            cambiarNombre({ campo: "", valido: null });
-            cambiarApellido({ campo: "", valido: null });
-            cambiarTelefono({ campo: "", valido: null });
-          } else {
-            window.location = "http://localhost:3000/Cola";
-          }
-        });
-    }
-  };
+        if (expresiones.nombre.test(data.Nombre) && expresiones.nombre.test(data.Apellido) && expresiones.telefono.test(data.Telefono)) {
+          return navigate("/Cola", { replace: true });
+        } else {
+          cambiarNombre({ campo: "", valido: null });
+          cambiarApellido({ campo: "", valido: null });
+          cambiarTelefono({ campo: "", valido: null });
+        }
+      });
+  }
+};
  
   return (
 

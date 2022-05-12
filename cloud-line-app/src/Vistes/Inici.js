@@ -2,8 +2,6 @@ import * as React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Servicio from "./../components/Servicios/Servicios";
 import { Link } from "react-router-dom";
-import { urlsApp } from "./../constants/Rutas";
-import Vacuna from "./../Vistes/Vacuna";
 
 
 export default function Inici(props) {

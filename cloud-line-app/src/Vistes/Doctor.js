@@ -39,7 +39,7 @@ export default function Inici(props) {
       telefono.valido === "true"
     ) {
       fetch("http://192.168.50.129:8080/users/cola", {
-        method: "post",
+        method: "POST",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -55,15 +55,13 @@ export default function Inici(props) {
           return response.json();
         })
         .then(function (data) {
-          setUser(data[0]);
-          console.log(data);
-
-          if (user !== undefined) {
+  
+          if (expresiones.nombre.test(data.Nombre) && expresiones.nombre.test(data.Apellido) && expresiones.telefono.test(data.Telefono)) {
+            return navigate("/Cola", { replace: true });
+          } else {
             cambiarNombre({ campo: "", valido: null });
             cambiarApellido({ campo: "", valido: null });
             cambiarTelefono({ campo: "", valido: null });
-          } else {
-            window.location = "http://localhost:3000/Cola";
           }
         });
     }

@@ -2,6 +2,11 @@
   width: 100px;
 }
 
+.logout svg{
+  color: red;
+  font-size: 45px;
+  cursor: pointer;
+}
 /* ESTILOS FORM CITA PREVIA */
 
 /* CheckBox header table*/

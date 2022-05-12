@@ -9,6 +9,7 @@ export const urlsApp = {
     citaMedicamento: "/CitaMedicamento",
     citaRevision: "/CitaRevision",
     cola: "/Cola",
-    adminCola: "/AdminCola"
+    adminCola: "/AdminCola",
+    login: "/Login"
 
 }

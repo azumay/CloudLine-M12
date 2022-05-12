@@ -20,6 +20,12 @@ export default function Cola(props) {
 
         const columnsCola = [
           {
+            field: "Tiquet",
+            headerName: "id",
+            width: 450,
+            editable: false,
+          },
+          {
             field: "Nombre",
             headerName: "Nombre",
             width: 450,

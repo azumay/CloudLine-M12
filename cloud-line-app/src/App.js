@@ -2,7 +2,7 @@ import './App.css';
 import React, { useState } from "react";
 import NavegacioBar from './components/NavegacioBar/NavegacioBar';
 import { urlsApp } from './constants/Rutas';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate,Route, Routes, BrowserRouter as Router} from "react-router-dom";
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from './constants/Estils'
 import Inici from './Vistes/Inici';
@@ -14,18 +14,19 @@ import Medicamento from './Vistes/Medicamento';
 import Revision from './Vistes/Revision';
 import Cola from './Vistes/Cola';
 import AdminCola from './Vistes/AdminCola';
+import Login from './Vistes/Login';
 
 /*Contextos*/
-import DadesContext from "./context/DadesContext";
+import UserContext from "./context/UserContext";
 
 
 function App() {
 
   const [user, setUser] = useState() ;
-
+  
  
   return (
-    <DadesContext.Provider value={{user, setUser}}>
+    <UserContext.Provider value={{user, setUser}}>
     <div className="App">
       <ThemeProvider theme={theme} >
         <NavegacioBar titol="Cloud Line" >
@@ -37,15 +38,16 @@ function App() {
               <Route path={urlsApp.citaMedicamento} element={<Medicamento  />} />
               <Route path={urlsApp.citaRevision} element={<Revision  />} />
 
+              <Route path={urlsApp.login} element={!user ? (<Login />) : (<Navigate replace to="/AdminCola" />)}/>
               <Route path={urlsApp.cola} element={ <Cola  /> } />
-              <Route path={urlsApp.adminCola} element={ <AdminCola  /> } />
+              <Route path={urlsApp.adminCola} element={user ? (<AdminCola />) : (<Navigate replace to="/Login" />)}/>
 
             </Routes>
          
         </NavegacioBar>
       </ThemeProvider>
     </div>
-    </DadesContext.Provider>
+    </UserContext.Provider>
   );
 }
 

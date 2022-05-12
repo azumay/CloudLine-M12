@@ -1,5 +1,6 @@
+
 import { createContext } from "react";
 
-const DadesContext = createContext(null);
+const DadesContext = createContext("");
 
 export default DadesContext;
