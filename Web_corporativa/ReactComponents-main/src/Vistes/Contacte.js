@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Banner from './Queue.jpeg';
+import Banner from './img/Queue.jpeg';
 
 export default function Contacte() {
     const codi = `function Cuadro(props)

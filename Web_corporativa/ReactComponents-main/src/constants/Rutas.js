@@ -1,10 +1,10 @@
-
 // Rutes de l'aplicació
 export const urlsApp = {
     login:"/Login",
     inici:"/",
     barraNavegacio:"/BarraNavegacio",
-    serveis:"/serveis",
+    serveis:"/Serveis",
     preus:"/preus",
-    contacte:"/contacte"
+    contacte:"/contacte",
+    AboutUs:"/sobreNosaltres"
 }

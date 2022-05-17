@@ -1,11 +1,9 @@
 
 import * as React from 'react';
 import CodiBloc from '../components/CodiBloc/CodiBloc';
-import Banner from './Queue.jpeg';
-import Qr from './QR.png';
-import Contacte from './Contacte';
-import Preus from './Preus';
-import Serveis from './Serveis';
+import Banner from './img/Queue.jpeg';
+import Qr from './img/QR.png';
+
 
 
 export default function Inici(props) {
@@ -68,20 +66,20 @@ export default function Inici(props) {
                                     </div>
                                 </div>
                             </div>
-                                <div className='col-12 col-xl-6 mb-3'>
-                                    <div className='card h-100'>
-                                        <div className='card-body'>
-                                        <img src={Qr} className='img-card-top rounded' alt='imagen identificativa ventaja' />
-                                            <h5 className='card-title'>
-                                                Reducción del tiempo de espera
-                                            </h5>
-                                            <p className='card-text'>
-                                                Se puede llegar a todos sitios mucho más rápido, sin que haya mucha gente que interrumpa al empleado para preguntar cuándo llegará su turno o dudas que pueden ser resueltas en otro momento.
-                                            </p>
-                                        </div>
+                            <div className='col-12 col-xl-6 mb-3'>
+                                <div className='card h-100'>
+                                    <div className='card-body'>
+                                    <img src={Qr} className='img-card-top rounded' alt='imagen identificativa ventaja' />
+                                        <h5 className='card-title'>
+                                            Reducción del tiempo de espera
+                                        </h5>
+                                        <p className='card-text'>
+                                            Se puede llegar a todos sitios mucho más rápido, sin que haya mucha gente que interrumpa al empleado para preguntar cuándo llegará su turno o dudas que pueden ser resueltas en otro momento.
+                                        </p>
                                     </div>
                                 </div>
                             </div>
+                        </div>
                     </div>
                 </div>
             </div>
