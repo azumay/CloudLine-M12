@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import { Link } from "react-router-dom";
+
 import Button from "@mui/material/Button";
 import LogoutIcon from '@mui/icons-material/Logout';
 import UserContext from "../context/UserContext";
@@ -20,9 +20,14 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 
 export default function AdminCola(props) {
+
+  
   const {user, setUser} = useContext(UserContext);
+
   const logout = () => {
-    setUser(null);
+    setUser(false);
+    miLocalStorage.clear(); //Borramos el localStorage 
+    
   }
   const [id, setId] = useState("");
 
@@ -30,6 +35,11 @@ export default function AdminCola(props) {
 
   const [selectedRows, setSelectedRows] = useState([]);
   const [selectionModel, setSelectionModel] = useState([]);
+
+  //Constante con el local Storage
+  const miLocalStorage = window.localStorage;
+
+  miLocalStorage.setItem('user', JSON.stringify(user));
 
   useEffect(() => {
     selectID();
@@ -156,7 +166,7 @@ export default function AdminCola(props) {
         return response.json();
       })
       .then(function (myJson) {
-        console.log(myJson[0].datosUser);
+       
         setData(myJson[0].datosUser);
       })
       .catch((error) => {

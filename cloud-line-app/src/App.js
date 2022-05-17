@@ -23,7 +23,7 @@ import DadesContext from './context/DadesContext';
 
 function App() {
 
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user'))) ;
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
   const [tiquet, setTiquet] = useState();
   
  
