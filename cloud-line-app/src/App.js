@@ -18,15 +18,18 @@ import Login from './Vistes/Login';
 
 /*Contextos*/
 import UserContext from "./context/UserContext";
+import DadesContext from './context/DadesContext';
 
 
 function App() {
 
-  const [user, setUser] = useState() ;
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user'))) ;
+  const [tiquet, setTiquet] = useState();
   
  
   return (
     <UserContext.Provider value={{user, setUser}}>
+      <DadesContext.Provider value={{tiquet, setTiquet}}>
     <div className="App">
       <ThemeProvider theme={theme} >
         <NavegacioBar titol="Cloud Line" >
@@ -47,6 +50,7 @@ function App() {
         </NavegacioBar>
       </ThemeProvider>
     </div>
+    </DadesContext.Provider>
     </UserContext.Provider>
   );
 }

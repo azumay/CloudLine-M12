@@ -81,7 +81,12 @@ export default function AdminCola(props) {
 */
 
   const columnsCola = [
-    
+    {
+      field: "Tiquet",
+      headerName: "Nº Tiquet",
+      width: 100,
+      editable: false,
+    },
     {
       field: "Nombre",
       headerName: "Nombre",
@@ -128,15 +133,13 @@ export default function AdminCola(props) {
     })
       .then(function (response) {
         if (!response.ok) throw Error(response.status);
-        //console.log(response);
-
         return response.json();
       })
       .then(function (myJson) {
         console.log(myJson);
       })
       .catch((error) => {
-        //console.log("error" + error.message);
+        console.log("error " + error.message);
       });
       getData();
   };

@@ -53,7 +53,7 @@ export default function Inici(props) {
         return response.json();
       })
       .then(function (data) {
-
+        
         if (expresiones.nombre.test(data.Nombre) && expresiones.nombre.test(data.Apellido) && expresiones.telefono.test(data.Telefono)) {
           return navigate("/Cola", { replace: true });
         } else {

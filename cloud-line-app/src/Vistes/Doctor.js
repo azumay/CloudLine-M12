@@ -10,6 +10,7 @@ import {
   MensajeError,
 } from "./../components/Form/EstilosForm";
 
+
 import Input from "./../components/Form/Input";
 
 import DadesContext from "../context/DadesContext";
@@ -17,20 +18,23 @@ import DadesContext from "../context/DadesContext";
 export default function Inici(props) {
   const navigate = useNavigate();
 
-  const [formularioValido, cambiarFormularioValido] = useState(null);
+  //const [formularioValido, cambiarFormularioValido] = useState(null);
 
   const [nombre, cambiarNombre] = useState({ campo: "", valido: null });
   const [apellido, cambiarApellido] = useState({ campo: "", valido: null });
   const [telefono, cambiarTelefono] = useState({ campo: "", valido: null });
 
-  const { user, setUser } = useContext(DadesContext);
+  
+  const {tiquet, setTiquet} = useContext(DadesContext);
+  
+  console.log(tiquet)
 
   const expresiones = {
     nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
     telefono: /(6|7)[ -]*([0-9][ -]*){8}/,
   };
 
-  const onSubmit = (e) => {
+  const onSubmit =  (e) => {
     e.preventDefault();
 
     if (
@@ -38,7 +42,7 @@ export default function Inici(props) {
       apellido.valido === "true" &&
       telefono.valido === "true"
     ) {
-      fetch("http://192.168.50.129:8080/users/cola", {
+       fetch("http://192.168.50.129:8080/users/cola", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -53,17 +57,22 @@ export default function Inici(props) {
       })
         .then(function (response) {
           return response.json();
+         
         })
-        .then(function (data) {
+        .then( (data) => {
+         setTiquet(`Número tiquet: ${data.Tiquet}`)
+     
   
           if (expresiones.nombre.test(data.Nombre) && expresiones.nombre.test(data.Apellido) && expresiones.telefono.test(data.Telefono)) {
             return navigate("/Cola", { replace: true });
+
           } else {
             cambiarNombre({ campo: "", valido: null });
             cambiarApellido({ campo: "", valido: null });
             cambiarTelefono({ campo: "", valido: null });
           }
         });
+        
     }
   };
 

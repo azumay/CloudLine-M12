@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import QRCode from "react-qr-code";
+
+import DadesContext from "../context/DadesContext";
 
 import { Link } from "react-router-dom";
 import DataGridMui from "./../components/DataGridMui/DataGridMui";
@@ -18,29 +21,25 @@ export default function Cola(props) {
 */
     const [data, setData] = useState();
 
+    const {tiquet, setTiquet} = useContext(DadesContext);
+
         const columnsCola = [
           {
             field: "Tiquet",
-            headerName: "id",
-            width: 450,
+            headerName: "Nº Tiquet",
+            width: 350,
             editable: false,
           },
           {
             field: "Nombre",
             headerName: "Nombre",
-            width: 450,
-            editable: false,
-          },
-          {
-            field: "Apellido",
-            headerName: "Apellido",
-            width: 450,
+            width: 350,
             editable: false,
           },
           {
             field: "Servicio",
             headerName: "Servicio",
-            width: 250,
+            width: 450,
             editable: false,
           },
         ];
@@ -57,7 +56,6 @@ export default function Cola(props) {
                 return response.json();
               })
               .then(function (myJson) {
-                console.log(myJson[0].datosUser);
                 setData(myJson[0].datosUser);
               })
               .catch((error) => {
@@ -77,7 +75,15 @@ export default function Cola(props) {
    
      
         <div className="mb-5 cola-user">
-
+          <div id="box-qr">
+            <QRCode 
+            value={tiquet} 
+            size={128}
+            bgColor={"#ffffff"}
+            fgColor={"#6785c1"}
+            />
+          </div>
+        <h1>{tiquet}</h1>
         <DataGridMui
         data={data}
         col={columnsCola}
