@@ -26,7 +26,7 @@ export default function AdminCola(props) {
 
   const logout = () => {
     setUser(false);
-    miLocalStorage.clear(); //Borramos el localStorage 
+    LocalStorageUser.removeItem('user'); //Borramos el localStorage con los datos del login 
     
   }
   const [id, setId] = useState("");
@@ -37,9 +37,10 @@ export default function AdminCola(props) {
   const [selectionModel, setSelectionModel] = useState([]);
 
   //Constante con el local Storage
-  const miLocalStorage = window.localStorage;
-
-  miLocalStorage.setItem('user', JSON.stringify(user));
+  const LocalStorageUser = window.localStorage;
+  
+  //Asignamos los valores del State User
+  LocalStorageUser.setItem('user', JSON.stringify(user)); 
 
   useEffect(() => {
     selectID();

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Servicio from "./../components/Servicios/Servicios";
 import { Link } from "react-router-dom";
@@ -6,7 +6,7 @@ import DadesContext from "../context/DadesContext";
 
 export default function Inici(props) {
 
-  const {tiquet, setTiquet} = useContext(DadesContext);
+  const [tiquet, setTiquet] = useState(JSON.parse(localStorage.getItem('tiquet')));
   const codi = `function Cuadro(props)
 {
     const { color } = props;

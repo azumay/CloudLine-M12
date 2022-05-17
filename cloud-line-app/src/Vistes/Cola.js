@@ -2,12 +2,19 @@ import React, { useState, useEffect, useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import QRCode from "react-qr-code";
 
+/*ICONOS*/
+import DeleteIcon from "@mui/icons-material/Delete";
+import Button from "@mui/material/Button";
+
 import DadesContext from "../context/DadesContext";
 
 import { Link } from "react-router-dom";
 import DataGridMui from "./../components/DataGridMui/DataGridMui";
 
+import { useNavigate } from "react-router-dom";
+
 export default function Cola(props) {
+  const navigate = useNavigate();
 
 /*
                 "_id": "624c965ff8b62ea4ab54f6ec",
@@ -24,20 +31,14 @@ export default function Cola(props) {
     const {tiquet, setTiquet} = useContext(DadesContext);
 
     //Constante con el local Storage
-    const miLocalStorage = window.localStorage;
+    const LocalStorageTiquet = window.localStorage;
 
-    miLocalStorage.setItem('tiquet', JSON.stringify(tiquet));
+    LocalStorageTiquet.setItem('tiquet', JSON.stringify(tiquet));
 
         const columnsCola = [
           {
             field: "Tiquet",
             headerName: "Nº Tiquet",
-            width: 350,
-            editable: false,
-          },
-          {
-            field: "Nombre",
-            headerName: "Nombre",
             width: 350,
             editable: false,
           },
@@ -74,6 +75,12 @@ export default function Cola(props) {
             getData();
           }, []);
           
+
+          const dejarCola = () => {
+            
+            LocalStorageTiquet.removeItem('tiquet'); //Borramos el localStorage 
+            return navigate("/", { replace: true });
+          }
   return (
 
     <div className="container">
@@ -91,11 +98,24 @@ export default function Cola(props) {
             />
           </div>
         <h1>{tiquet}</h1>
+        <Button
+          variant="contained"
+          type="submit"
+          startIcon={<DeleteIcon />}
+          onClick={() => dejarCola()}
+          size="small"
+          color="error"
+        >
+          Tirar tiquet
+        </Button>
+        <div className="cola-normal">
         <DataGridMui
         data={data}
         col={columnsCola}
+        
         rowId={(row) => row.createdAt}
         />
+        </div>
         
       </div>
       <Link to="/" className="button-62">Volver</Link>
