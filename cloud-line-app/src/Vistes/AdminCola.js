@@ -45,6 +45,7 @@ export default function AdminCola(props) {
     selectID();
   }, [selectedRows]);
 
+  //Funcion para almacenar el id del row que hemos seleccionado en la tabla
   function selectID() {
     var row;
     row = selectedRows[0];
@@ -70,7 +71,6 @@ export default function AdminCola(props) {
           startIcon={<DeleteIcon />}
           onClick={() => postData()}
           size="small"
-          //disabled={selectionModel.length === 0}
           color="error"
         >
           Eliminar

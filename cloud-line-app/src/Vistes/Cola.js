@@ -23,6 +23,11 @@ export default function Cola(props) {
 
     const {tiquet, setTiquet} = useContext(DadesContext);
 
+    //Constante con el local Storage
+    const miLocalStorage = window.localStorage;
+
+    miLocalStorage.setItem('tiquet', JSON.stringify(tiquet));
+
         const columnsCola = [
           {
             field: "Tiquet",
@@ -44,6 +49,7 @@ export default function Cola(props) {
           },
         ];
 
+        //Fetch para obtener los usuarios de la Cola
         const getData = async () => {
             await fetch("http://192.168.50.129:8080/users/getcola", {
               headers: {
@@ -63,6 +69,7 @@ export default function Cola(props) {
               });
           };
     
+          //Refresh de los usuarios nuevos
     useEffect(() => {
             getData();
           }, []);

@@ -24,7 +24,7 @@ import DadesContext from './context/DadesContext';
 function App() {
 
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
-  const [tiquet, setTiquet] = useState();
+  const [tiquet, setTiquet] = useState(JSON.parse(localStorage.getItem('tiquet')));
   
  
   return (
@@ -42,7 +42,7 @@ function App() {
               <Route path={urlsApp.citaRevision} element={<Revision  />} />
 
               <Route path={urlsApp.login} element={!user ? (<Login />) : (<Navigate replace to="/AdminCola" />)}/>
-              <Route path={urlsApp.cola} element={ <Cola  /> } />
+              <Route path={urlsApp.cola} element={tiquet ?  <Cola  /> :  <Navigate replace to="/" />} />
               <Route path={urlsApp.adminCola} element={user ? (<AdminCola />) : (<Navigate replace to="/Login" />)}/>
 
             </Routes>
