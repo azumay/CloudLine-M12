@@ -8,6 +8,7 @@ const colores = {
 }
 
 const Formulario = styled.form`
+	
     background-color: #6785c1;
     padding: 30px;
     color: white;

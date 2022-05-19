@@ -39,13 +39,13 @@ export default function Cola(props) {
           {
             field: "Tiquet",
             headerName: "Nº Tiquet",
-            width: 350,
+            width: 150,
             editable: false,
           },
           {
             field: "Servicio",
             headerName: "Servicio",
-            width: 450,
+            width: 150,
             editable: false,
           },
         ];
@@ -96,8 +96,7 @@ export default function Cola(props) {
             bgColor={"#ffffff"}
             fgColor={"#6785c1"}
             />
-          </div>
-        <h1>{tiquet}</h1>
+            <h1>{tiquet}</h1>
         <Button
           variant="contained"
           type="submit"
@@ -108,9 +107,12 @@ export default function Cola(props) {
         >
           Tirar tiquet
         </Button>
+          </div>
+        
         <div className="cola-normal">
         <DataGridMui
         data={data}
+        
         col={columnsCola}
         
         rowId={(row) => row.createdAt}

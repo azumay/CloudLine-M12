@@ -1,12 +1,17 @@
 .serveis img {
   width: 100px;
 }
-
+.boxEditDB{
+  margin: 20px auto;
+  width: 80%;
+}
 .logout svg{
   color: red;
   font-size: 45px;
   cursor: pointer;
 }
+
+
 /* ESTILOS FORM CITA PREVIA */
 
 /* CheckBox header table*/
@@ -16,6 +21,29 @@
 /* CheckBox row table*/
 .cola-user .MuiDataGrid-cellCheckbox{
   display: none !important;
+}
+.MuiDataGrid-columnHeader{
+  width: 50% !important;
+}
+
+/*MEDIA QUERY version SMARTPHONE*/
+@media (max-width: 809px) {
+ 
+  .cola-normal{
+    width:100%;
+    margin: 20px auto;
+  }
+  .forms form{
+    width: 100%;
+  }
+}
+
+/*MEDIA QUERY version TABLET*/
+@media (min-width: 809px) {
+  .cola-normal{
+    width:40%;
+    margin: 20px auto;
+  }
 }
 
 

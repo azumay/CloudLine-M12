@@ -18,12 +18,14 @@ export default function Inici(props) {
   const navigate = useNavigate();
 
   const [formularioValido, cambiarFormularioValido] = useState(null);
-  const { user, setUser } = useContext(DadesContext);
 
+  /* VALORES DEL FORMULARIO */
   const [nombre, cambiarNombre] = useState({ campo: "", valido: null });
   const [apellido, cambiarApellido] = useState({ campo: "", valido: null });
   const [telefono, cambiarTelefono] = useState({ campo: "", valido: null });
 
+  /* VALOR DONDE GUARDAREMOS EL NÚMERO TIQUET */
+  const { tiquet, setTiquet } = useContext(DadesContext);
 
   const expresiones = {
     nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
@@ -51,68 +53,75 @@ export default function Inici(props) {
           Servicio: "Vacunación",
         }),
       })
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+          //Asignamos al conexto el num del tiquet
+          setTiquet(`Número tiquet: ${data.Tiquet}`);
 
-        if (expresiones.nombre.test(data.Nombre) && expresiones.nombre.test(data.Apellido) && expresiones.telefono.test(data.Telefono)) {
-          return navigate("/Cola", { replace: true });
-        } else {
-          cambiarNombre({ campo: "", valido: null });
-          cambiarApellido({ campo: "", valido: null });
-          cambiarTelefono({ campo: "", valido: null });
-        }
-      });
-  }
-};
- 
+          if (
+            expresiones.nombre.test(data.Nombre) &&
+            expresiones.nombre.test(data.Apellido) &&
+            expresiones.telefono.test(data.Telefono)
+          ) {
+            return navigate("/Cola", { replace: true });
+          } else {
+            cambiarNombre({ campo: "", valido: null });
+            cambiarApellido({ campo: "", valido: null });
+            cambiarTelefono({ campo: "", valido: null });
+          }
+        });
+    }
+  };
+
   return (
-
     <div className="container">
       <div className="row">
-      <h1 className="mb-5">Cola para vacunarse</h1>
-   
-      <Servicio img="vacuna.webp" titulo="" />
-    <div className="mb-5">
-      <Formulario action="" onSubmit={onSubmit}>
-          <Input
-            estado={nombre}
-            cambiarEstado={cambiarNombre}
-            tipo="text"
-            label="Nombre"
-            placeholder="Jhon"
-            name="Nombre"
-            leyendaError="El nombre solo puede contener letras y espacios."
-            expresionRegular={expresiones.nombre}
-          />
-         
-          <Input
-            estado={apellido}
-            cambiarEstado={cambiarApellido}
-            tipo="text"
-            label="Apellido"
-            placeholder="Smith"
-            name="Apellido"
-            leyendaError="El apellido solo puede contener letras y espacios."
-            expresionRegular={expresiones.nombre}
-          />
-          <Input
-            estado={telefono}
-            cambiarEstado={cambiarTelefono}
-            tipo="tel"
-            label="Telefono"
-            placeholder="+34"
-            name="telefono"
-            leyendaError="Telefono no valido."
-            expresionRegular={expresiones.telefono}
-          />
-           <Boton type="submit">Enviar</Boton>
-        </Formulario>
-      
-      <Link to="/" className="button-62">Volver</Link>
+        <h1 className="mb-5">Cola para vacunarse</h1>
+
+        <Servicio img="vacuna.webp" titulo="" />
+        <div className="mb-5 forms">
+          <Formulario action="" onSubmit={onSubmit}>
+            <Input
+              estado={nombre}
+              cambiarEstado={cambiarNombre}
+              tipo="text"
+              label="Nombre"
+              placeholder="Jhon"
+              name="Nombre"
+              leyendaError="El nombre solo puede contener letras y espacios."
+              expresionRegular={expresiones.nombre}
+            />
+
+            <Input
+              estado={apellido}
+              cambiarEstado={cambiarApellido}
+              tipo="text"
+              label="Apellido"
+              placeholder="Smith"
+              name="Apellido"
+              leyendaError="El apellido solo puede contener letras y espacios."
+              expresionRegular={expresiones.nombre}
+            />
+            <Input
+              estado={telefono}
+              cambiarEstado={cambiarTelefono}
+              tipo="tel"
+              label="Telefono"
+              placeholder="+34"
+              name="telefono"
+              leyendaError="Telefono no valido."
+              expresionRegular={expresiones.telefono}
+            />
+            <Boton type="submit">Enviar</Boton>
+          </Formulario>
+
+          <Link to="/" className="button-62">
+            Volver
+          </Link>
+        </div>
       </div>
-    </div>
     </div>
   );
 }
