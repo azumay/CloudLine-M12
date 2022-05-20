@@ -25,13 +25,15 @@ export default function AdminCola(props) {
   const {user, setUser} = useContext(UserContext);
 
   const logout = () => {
-    setUser(false);
+    setUser(false); //Cambiamos el estado del conexto User para redirigir
     LocalStorageUser.removeItem('user'); //Borramos el localStorage con los datos del login 
     
   }
   const [id, setId] = useState("");
 
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
+
+  const [dataOriginal, setDataOriginal]  = useState(setData);
 
   const [selectedRows, setSelectedRows] = useState([]);
   const [selectionModel, setSelectionModel] = useState([]);
@@ -45,6 +47,7 @@ export default function AdminCola(props) {
   useEffect(() => {
     selectID();
   }, [selectedRows]);
+
 
   //Funcion para almacenar el id del row que hemos seleccionado en la tabla
   function selectID() {
@@ -80,16 +83,6 @@ export default function AdminCola(props) {
     );
   }
 
-  /*
-                "_id": "624c965ff8b62ea4ab54f6ec",
-                "Nombre": "Xavi",
-                "Apellido": "Yamuza",
-                "Telefono": "605251709",
-                "Servicio": "Vacunacion",
-                "createdAt": "2022-04-05T19:19:59.071Z",
-                "updatedAt": "2022-04-05T19:19:59.071Z",
-                "__v": 0
-*/
 
   const columnsCola = [
     {
@@ -174,10 +167,17 @@ export default function AdminCola(props) {
         console.log(error.message);
       });
   };
-  useEffect(() => {
-    getData();
-  }, []);
  
+  //Cada 6 segundos resfrecamos la tabla
+  useEffect(() => {
+    setInterval(() => {
+      getData();
+    }, 3000);
+  }, []);
+
+
+  
+
   return (
     <div className="container">
       <div className="row">

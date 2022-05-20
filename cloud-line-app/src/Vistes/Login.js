@@ -49,7 +49,7 @@ export default function Login() {
     .then(function(data) {
         setUser(data[0]);
 
-        if (user !== undefined) {
+        if (user !== null) {
           return navigate('/', { replace: true });
         }else{
           cambiarCorreo({campo: '', valido: 'false'});
@@ -59,6 +59,7 @@ export default function Login() {
     })
       .catch((error) => {
         console.log("error: " + error.message);
+        mensajeError()
       });
 
     };
