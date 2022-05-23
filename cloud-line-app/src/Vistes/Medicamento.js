@@ -73,9 +73,8 @@ export default function Inici(props) {
   return (
     <div className="container">
       <div className="row">
-        <h1 className="mb-5">Cola para medicamentos</h1>
-
-        <Servicio img="drugs.png" titulo="" />
+    
+        <Servicio img="drugs.png" titulo="Cola para medicamentos" />
         <div className="mb-5 forms">
           <Formulario action="" onSubmit={onSubmit}>
             <Input

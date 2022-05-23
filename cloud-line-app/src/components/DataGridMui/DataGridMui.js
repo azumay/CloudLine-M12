@@ -40,7 +40,7 @@ export default function DataGridMui(props) {
        
         disableSelectionOnClick
         localeText={{
-          noRowsLabel: "No s'han trobat dades.",
+          noRowsLabel: "Cargando datos...",
           //
           columnMenuLabel: "Menú",
           columnMenuUnsort: "Desordenar",

@@ -78,9 +78,8 @@ export default function Inici(props) {
   return (
     <div className="container">
       <div className="row">
-        <h1 className="mb-5">Cola para vacunarse</h1>
-
-        <Servicio img="vacuna.webp" titulo="" />
+        
+        <Servicio img="vacuna.webp" titulo="Cola para vacunarse" />
         <div className="mb-5 forms">
           <Formulario action="" onSubmit={onSubmit}>
             <Input
