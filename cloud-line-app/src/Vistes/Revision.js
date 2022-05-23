@@ -102,7 +102,7 @@ export default function Inici(props) {
               estado={telefono}
               cambiarEstado={cambiarTelefono}
               tipo="tel"
-              label="Telefono"
+              label="Teléfono"
               placeholder="+34"
               name="telefono"
               leyendaError="Telefono no valido."

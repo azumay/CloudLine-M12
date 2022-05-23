@@ -6,6 +6,8 @@ import Button from "@mui/material/Button";
 import LogoutIcon from '@mui/icons-material/Logout';
 import UserContext from "../context/UserContext";
 
+/* ALERTAS */
+import AlertDelete from "./../components/Alertas/AlertDelete";
 
 /* DATAGRID - MUI*/
 import DataGridMui from "./../components/DataGridMui/DataGridMui";
@@ -29,14 +31,19 @@ export default function AdminCola(props) {
     LocalStorageUser.removeItem('user'); //Borramos el localStorage con los datos del login 
     
   }
-  const [id, setId] = useState("");
-
+  
   const [data, setData] = useState([]);
+
+  const [id, setId] = useState("");
+  const [numTiquet, setNumTiquet] = useState("");
+  const [nombrePersona, setNombrePersona] = useState("");
+
 
   const [dataOriginal, setDataOriginal]  = useState(setData);
 
   const [selectedRows, setSelectedRows] = useState([]);
   const [selectionModel, setSelectionModel] = useState([]);
+
 
   //Constante con el local Storage
   const LocalStorageUser = window.localStorage;
@@ -56,8 +63,12 @@ export default function AdminCola(props) {
 
     if (selectedRows.length > 0) {
       setId(row._id);
+      setNumTiquet(row.Tiquet)
+      setNombrePersona(row.Nombre);
     } else {
       setId("");
+      setNumTiquet("");
+      setNombrePersona("");
     }
   }
 
@@ -73,7 +84,8 @@ export default function AdminCola(props) {
           variant="contained"
           type="submit"
           startIcon={<DeleteIcon />}
-          onClick={() => postData()}
+          //onClick={() => postData()}
+          onClick={() => AlertDelete(numTiquet, nombrePersona, postData, "eliminar")}
           size="small"
           color="error"
         >
@@ -105,7 +117,7 @@ export default function AdminCola(props) {
     },
     {
       field: "Telefono",
-      headerName: "Telefono",
+      headerName: "Teléfono",
       width: 200,
       editable: false,
     },
@@ -160,7 +172,6 @@ export default function AdminCola(props) {
         return response.json();
       })
       .then(function (myJson) {
-       
         setData(myJson[0].datosUser);
       })
       .catch((error) => {
@@ -175,8 +186,6 @@ export default function AdminCola(props) {
     }, 3000);
   }, []);
 
-
-  
 
   return (
     <div className="container">
@@ -241,7 +250,7 @@ export default function AdminCola(props) {
         onClick={() => logout()}
       
         >
-          Sortir
+          Salir
       </Button>
       </div>
     

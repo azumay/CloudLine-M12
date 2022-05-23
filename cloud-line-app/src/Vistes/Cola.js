@@ -2,13 +2,13 @@ import React, { useState, useEffect, useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import QRCode from "react-qr-code";
 
-/*ICONOS*/
+/* ICONOS */
 import DeleteIcon from "@mui/icons-material/Delete";
 import Button from "@mui/material/Button";
 
+/* CONEXTOS */
 import DadesContext from "../context/DadesContext";
 
-import { Link } from "react-router-dom";
 import DataGridMui from "./../components/DataGridMui/DataGridMui";
 
 import { useNavigate } from "react-router-dom";
@@ -21,6 +21,7 @@ export default function Cola(props) {
                 "Nombre": "Xavi",
                 "Apellido": "Yamuza",
                 "Telefono": "605251709",
+                "Tiquet": "1",
                 "Servicio": "Vacunacion",
                 "createdAt": "2022-04-05T19:19:59.071Z",
                 "updatedAt": "2022-04-05T19:19:59.071Z",
@@ -39,7 +40,7 @@ export default function Cola(props) {
     {
       field: "Tiquet",
       headerName: "Nº Tiquet",
-      width: 150,
+      width: 100,
       editable: false,
     },
     {
@@ -78,6 +79,7 @@ export default function Cola(props) {
   }, []);
 
   const dejarCola = () => {
+    setTiquet(null);
     LocalStorageTiquet.removeItem("tiquet"); //Borramos el localStorage
     return navigate("/", { replace: true });
   };
@@ -85,7 +87,8 @@ export default function Cola(props) {
     <div className="container">
       <div className="row">
         <h1 className="mb-5">Cola de espera</h1>
-
+     
+     
         <div className="mb-5 cola-user">
           <div id="box-qr">
             <QRCode
@@ -94,7 +97,11 @@ export default function Cola(props) {
               bgColor={"#ffffff"}
               fgColor={"#6785c1"}
             />
-            <h1>{tiquet}</h1>
+            <h3>{tiquet}</h3>
+            <p class="alert alert-warning">
+              <em>1 Tiquet simultáneo por persona</em>
+              </p>
+
             <Button
               variant="contained"
               type="submit"
@@ -106,7 +113,7 @@ export default function Cola(props) {
               Tirar tiquet
             </Button>
           </div>
-
+ 
           <div className="cola-normal">
             <DataGridMui
               data={data}
@@ -115,9 +122,6 @@ export default function Cola(props) {
             />
           </div>
         </div>
-        <Link to="/" className="button-62">
-          Volver
-        </Link>
       </div>
     </div>
   );

@@ -1,64 +1,103 @@
 .serveis img {
   width: 100px;
 }
-.boxEditDB{
+.boxEditDB {
   margin: 20px auto;
   width: 80%;
 }
-.logout svg{
+.logout svg {
   color: red;
   font-size: 45px;
   cursor: pointer;
 }
 
+.row div {
+  transition: all 0.5s;
+}
+
+
 
 /* ESTILOS FORM CITA PREVIA */
 
 /* CheckBox header table*/
-.cola-user .MuiDataGrid-columnHeaderCheckbox{
+.cola-user .MuiDataGrid-columnHeaderCheckbox {
   display: none !important;
 }
 /* CheckBox row table*/
-.cola-user .MuiDataGrid-cellCheckbox{
+.cola-user .MuiDataGrid-cellCheckbox {
   display: none !important;
 }
-.MuiDataGrid-columnHeader{
+.MuiDataGrid-columnHeader {
   width: 50% !important;
 }
 
 /*MEDIA QUERY version SMARTPHONE*/
 @media (max-width: 809px) {
- 
-  .cola-normal{
-    width:100%;
+  .cola-normal {
+    width: 100%;
     margin: 20px auto;
   }
-  .forms form{
+  .forms form {
     width: 100%;
+  }
+  .alert-warning {
+    font-size: 12px;
+    width: 80%;
+    margin: 10px auto;
+  
+  }
+
+}
+
+/*MEDIA QUERY version TABLET*/
+@media (min-width: 809px) {
+  .cola-normal {
+    width: 40%;
+    margin: 20px auto;
+  }
+  .alert-warning {
+    font-size: 12px;
+    width: 40%;
+    margin: 10px auto;
+  
   }
 }
 
 /*MEDIA QUERY version TABLET*/
 @media (min-width: 809px) {
-  .cola-normal{
-    width:40%;
+  .cola-normal {
+    width: 40%;
     margin: 20px auto;
+  }
+  .alert-warning {
+    font-size: 12px;
+    width: 40%;
+    margin: 10px auto;
   }
 }
 
+/*MEDIA QUERY version PC*/
+@media (min-width: 1060px) {
+  .alert-warning {
+    font-size: 12px;
+    width: 30%;
+  }
+
+}
 
 /* CSS */
 .button-62:hover {
   color: white !important;
 }
 .button-62 {
-  background: linear-gradient(to bottom right, #EF4765, #FF9A5A);
+  background: linear-gradient(to bottom right, #ef4765, #ff9a5a);
   border: 0;
   border-radius: 12px;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
   display: inline-block;
-  font-family: -apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
   font-size: 16px;
   font-weight: 500;
   line-height: 2.5;
@@ -66,7 +105,7 @@
   padding: 0 1rem;
   text-align: center;
   text-decoration: none;
-  transition: box-shadow .2s ease-in-out;
+  transition: box-shadow 0.2s ease-in-out;
   user-select: none;
   -webkit-user-select: none;
   width: 25% !important;
@@ -76,11 +115,15 @@
 }
 
 .button-62:not([disabled]):focus {
-  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5),
+    -0.125rem -0.125rem 1rem rgba(239, 71, 101, 0.5),
+    0.125rem 0.125rem 1rem rgba(255, 154, 90, 0.5);
 }
 
 .button-62:not([disabled]):hover {
-  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5),
+    -0.125rem -0.125rem 1rem rgba(239, 71, 101, 0.5),
+    0.125rem 0.125rem 1rem rgba(255, 154, 90, 0.5);
 }
 
 .formCitaPrevia {
@@ -123,7 +166,8 @@ input[type="submit"],
 .button {
   position: relative;
   background: #6785c1;
-  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
   color: white;
   text-transform: uppercase;
   border: none;

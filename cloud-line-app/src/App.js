@@ -36,10 +36,10 @@ function App() {
          
             <Routes>
               <Route path={urlsApp.inici} element={<Inici />} />
-              <Route path={urlsApp.citaVacuna} element={<Vacuna  />} />
-              <Route path={urlsApp.citaDoctor} element={<Doctor  />} />
-              <Route path={urlsApp.citaMedicamento} element={<Medicamento  />} />
-              <Route path={urlsApp.citaRevision} element={<Revision  />} />
+              <Route path={urlsApp.citaVacuna} element={tiquet ? (<Navigate replace to="/Cola" />) : <Vacuna  />} />
+              <Route path={urlsApp.citaDoctor} element={tiquet ? (<Navigate replace to="/Cola" />) : <Doctor  />} />
+              <Route path={urlsApp.citaMedicamento} element={tiquet ? (<Navigate replace to="/Cola" />) : <Medicamento  />} />
+              <Route path={urlsApp.citaRevision} element={tiquet ? (<Navigate replace to="/Cola" />) : <Revision  />} />
 
               <Route path={urlsApp.login} element={!user ? (<Login />) : (<Navigate replace to="/AdminCola" />)}/>
               <Route path={urlsApp.cola} element={tiquet ?  <Cola  /> :  <Navigate replace to="/" />} />
