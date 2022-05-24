@@ -1,17 +1,12 @@
 
 import * as React from 'react';
-import CodiBloc from '../components/CodiBloc/CodiBloc';
 import Banner from './img/Queue.jpeg';
 import Qr from './img/QR.png';
 
 
 
 export default function Inici(props) {
-    const codi = `function Cuadro(props)
-{
-    const { color } = props;
-}
-`;
+    
     return (
 
         <div className='container'>
@@ -22,7 +17,7 @@ export default function Inici(props) {
             </div>   
             <div className='row'>
                 <div className='col-12'>
-                    <div className='container'>
+                    <div className='container ps-0'>
                         <div className='row'>
                             <div className='col-12'>
                                 <h3>Ventajas de las colas virtuales</h3>

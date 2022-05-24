@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.img-tabla div p {
+  text-align: left;
+}
+
+@media(max-width: 600px) {
+  .css-zxdg2z{
+    padding-left: 0 !important;
+  }
+
+  .css-1ss2ei0-MuiContainer-root{
+    padding-left: 0;
+  }
+
+}

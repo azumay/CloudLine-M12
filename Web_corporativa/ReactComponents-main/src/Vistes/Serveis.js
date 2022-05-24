@@ -2,6 +2,8 @@ import * as React from 'react';
 import Cola from './img/cola.svg';
 import Agenda from './img/agenda.svg';
 import Empleado from './img/empleado.svg'
+import { urlsApp } from './../constants/Rutas';
+import { Route, Routes } from 'react-router-dom';
 
 export default function Serveis() {
     return(
@@ -20,7 +22,7 @@ export default function Serveis() {
                                 Cola virtual
                             </h5>
                             <p className='card-text'>
-                               Perfecta para evitar aglomeraciones y tener el control sobre los tiempos de espera en tu local. Contribuye a reducir el número de presonas presentes a la vez. Contacte con nosotros para un presupuesto a medida.
+                               Perfecta para evitar aglomeraciones y tener el control sobre los tiempos de espera en tu local. Contribuye a reducir el número de presonas presentes a la vez. <a href={urlsApp.AboutUs}>Más información.</a>
                             </p>
                         </div>
                     </div>
