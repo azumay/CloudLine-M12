@@ -9,6 +9,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default function DataGridMui(props) {
   const [selectionModel, setSelectionModel] = React.useState([]);
@@ -24,6 +25,10 @@ export default function DataGridMui(props) {
      **/
     <div style={{ height: 500 }} className="boxEditDB">
       <DataGrid
+      components={{
+        LoadingOverlay: CircularProgress,
+      }}
+      loading
         rows={data}
         columns={props.col}
         getRowId={rowId}
