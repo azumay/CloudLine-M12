@@ -4,19 +4,11 @@ import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
 
 
-
-/*ICONOS*/
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
-import CircularProgress from '@mui/material/CircularProgress';
-
 export default function DataGridMui(props) {
   const [selectionModel, setSelectionModel] = React.useState([]);
 
   const { data, rowId, ...altres } = props;
 
- 
 
   return (
     /**
@@ -25,10 +17,7 @@ export default function DataGridMui(props) {
      **/
     <div style={{ height: 500 }} className="boxEditDB">
       <DataGrid
-      components={{
-        LoadingOverlay: CircularProgress,
-      }}
-      loading
+     
         rows={data}
         columns={props.col}
         getRowId={rowId}
@@ -42,7 +31,6 @@ export default function DataGridMui(props) {
         style={{ fontSize: 15 }}
         rowsPerPageOptions={[10]}
         checkboxSelection={true} //Checks Rows
-       
         disableSelectionOnClick
         localeText={{
           noRowsLabel: "Cargando datos...",
@@ -86,7 +74,9 @@ export default function DataGridMui(props) {
           toolbarFiltersTooltipHide: "Quitar filtros",
           toolbarFiltersTooltipShow: "Ver filtros",
           toolbarFiltersTooltipActive: (count) =>
-            count !== 1 ? `${count} filtros activos` : `${count} filtros activos`,
+            count !== 1
+              ? `${count} filtros activos`
+              : `${count} filtros activos`,
 
           toolbarDensity: "Size",
           toolbarDensityLabel: "Densitat",

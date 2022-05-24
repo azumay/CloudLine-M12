@@ -21,7 +21,6 @@ export default function NavegacioBar(props) {
       <AppBar position="fixed" open={open}>
         <Toolbar>
           <Typography variant="h6" noWrap component="div">
-            
             <img src='cloud.png'></img>
             <b>{titol}</b>
           </Typography>
