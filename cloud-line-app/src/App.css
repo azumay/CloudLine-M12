@@ -14,8 +14,14 @@
 .row div {
   transition: all 0.5s;
 }
-
-
+.abierto{
+  color: #0f5132;
+  font-weight: bold;
+}
+.cerrado{
+  color: #83323a;
+  font-weight: bold;
+}
 
 /* ESTILOS FORM CITA PREVIA */
 
@@ -44,22 +50,15 @@
     font-size: 12px;
     width: 80%;
     margin: 10px auto;
-  
   }
-
-}
-
-/*MEDIA QUERY version TABLET*/
-@media (min-width: 809px) {
-  .cola-normal {
-    width: 40%;
-    margin: 20px auto;
+  .horario {
+    width: 90%;
+    margin: 0 auto;
   }
-  .alert-warning {
-    font-size: 12px;
-    width: 40%;
-    margin: 10px auto;
-  
+  .horario iframe {
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
   }
 }
 
@@ -73,6 +72,10 @@
     font-size: 12px;
     width: 40%;
     margin: 10px auto;
+  }
+  .horario {
+    width: 80% !important;
+    margin: 0 auto;
   }
 }
 
@@ -82,7 +85,10 @@
     font-size: 12px;
     width: 30%;
   }
-
+  .horario {
+    width: 50% !important;
+    margin: 0 auto;
+  }
 }
 
 /* CSS */

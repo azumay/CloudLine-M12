@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Servicio from "./../components/Servicios/Servicios";
 import { Link } from "react-router-dom";
 import DadesContext from "../context/DadesContext";
+import Horario from "./../components/Horario/Horario";
 
 export default function Inici(props) {
 
@@ -15,6 +16,7 @@ export default function Inici(props) {
   return (
     <div className="container">
       <div className="row">
+        <Horario/>
         <h1 className="mb-5">Elige un servicio</h1>
         <div className="col-md-6  col-lg-3 mb-5">
         <Link to="/CitaVacuna">
